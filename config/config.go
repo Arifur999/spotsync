@@ -21,9 +21,9 @@ func LoadEnv() *Config {
 	}
 
 	return &Config{
-		Port:           os.Getenv("PORT"),
-		DSN:            os.Getenv("DSN"),
-		JWTSecret:      os.Getenv("JWT_SECRET"),
+		Port:           strings.TrimSpace(os.Getenv("PORT")),
+		DSN:            strings.TrimSpace(os.Getenv("DSN")),
+		JWTSecret:      strings.TrimSpace(os.Getenv("JWT_SECRET")),
 		AllowedOrigins: parseOrigins(os.Getenv("ALLOWED_ORIGINS")),
 	}
 }
