@@ -133,6 +133,35 @@ All routes are prefixed with `/api/v1`.
 | DELETE | `/reservations/:id`            | Authenticated (owner or admin) | Cancel a reservation                |
 | GET    | `/reservations`                | Admin only              | List every reservation in the system        |
 
+## Deployment
+
+The repo ships a multi-stage `Dockerfile`, which Render, Railway, and Fly.io
+can all build and run directly — no platform-specific build/start commands
+needed.
+
+### Render
+
+1. New → Blueprint, point it at this repo (`render.yaml` is auto-detected),
+   or New → Web Service → Environment: **Docker**.
+2. Set the env vars `DSN`, `JWT_SECRET`, `ALLOWED_ORIGINS` in the dashboard
+   (Render supplies `PORT` automatically).
+3. Deploy — Render builds the `Dockerfile` and starts the container.
+
+### Railway
+
+1. New Project → Deploy from GitHub repo.
+2. Railway detects the `Dockerfile` automatically and builds it.
+3. Add the same env vars (`DSN`, `JWT_SECRET`, `ALLOWED_ORIGINS`) in the
+   Variables tab. Railway injects `PORT` automatically.
+
+### Fly.io
+
+```bash
+fly launch   # detects the Dockerfile, generates fly.toml
+fly secrets set DSN="..." JWT_SECRET="..." ALLOWED_ORIGINS="*"
+fly deploy
+```
+
 ## Error Handling
 
 Every response follows one of two shapes:

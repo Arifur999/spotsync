@@ -1,6 +1,6 @@
 module github.com/Arifur999/spotsync
 
-go 1.26.4
+go 1.25.0
 
 require (
 	github.com/go-playground/validator/v10 v10.30.3
