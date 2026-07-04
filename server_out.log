@@ -1,0 +1,123 @@
+
+2026/07/04 23:44:52 [32mD:/project-all/project-all/ph level 2 assingment/assingment-5/main.go:32 [33mSLOW SQL >= 200ms
+[0m[31;1m[858.419ms] [33m[rows:1][35m SELECT count(*) FROM information_schema.tables WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'users' AND table_type = 'BASE TABLE'[0m
+
+2026/07/04 23:44:52 [32mD:/project-all/project-all/ph level 2 assingment/assingment-5/main.go:32 [33mSLOW SQL >= 200ms
+[0m[31;1m[571.941ms] [33m[rows:1][35m SELECT CURRENT_DATABASE()[0m
+
+2026/07/04 23:44:53 [32mD:/project-all/project-all/ph level 2 assingment/assingment-5/main.go:32 [33mSLOW SQL >= 200ms
+[0m[31;1m[579.878ms] [33m[rows:-][35m SELECT c.column_name, c.is_nullable = 'YES', c.udt_name, c.character_maximum_length, c.numeric_precision, c.numeric_precision_radix, c.numeric_scale, c.datetime_precision, 8 * typlen, c.column_default, pd.description, c.identity_increment FROM information_schema.columns AS c JOIN pg_type AS pgt ON c.udt_name = pgt.typname LEFT JOIN pg_catalog.pg_description as pd ON pd.objsubid = c.ordinal_position AND pd.objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = c.table_name AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = c.table_schema)) where table_catalog = 'neondb' AND table_schema = CURRENT_SCHEMA() AND table_name = 'users'[0m
+
+2026/07/04 23:44:53 [32mD:/project-all/project-all/ph level 2 assingment/assingment-5/main.go:32 [33mSLOW SQL >= 200ms
+[0m[31;1m[285.843ms] [33m[rows:-][35m SELECT * FROM "users" LIMIT 5[0m
+
+2026/07/04 23:44:54 [32mD:/project-all/project-all/ph level 2 assingment/assingment-5/main.go:32 [33mSLOW SQL >= 200ms
+[0m[31;1m[577.217ms] [33m[rows:-][35m SELECT constraint_name FROM information_schema.table_constraints tc JOIN information_schema.constraint_column_usage AS ccu USING (constraint_schema, constraint_catalog, table_name, constraint_name) JOIN information_schema.columns AS c ON c.table_schema = tc.constraint_schema AND tc.table_name = c.table_name AND ccu.column_name = c.column_name WHERE constraint_type IN ('PRIMARY KEY', 'UNIQUE') AND c.table_catalog = 'neondb' AND c.table_schema = CURRENT_SCHEMA() AND c.table_name = 'users' AND constraint_type = 'UNIQUE'[0m
+
+2026/07/04 23:44:54 [32mD:/project-all/project-all/ph level 2 assingment/assingment-5/main.go:32 [33mSLOW SQL >= 200ms
+[0m[31;1m[573.688ms] [33m[rows:-][35m SELECT c.column_name, constraint_name, constraint_type FROM information_schema.table_constraints tc JOIN information_schema.constraint_column_usage AS ccu USING (constraint_schema, constraint_catalog, table_name, constraint_name) JOIN information_schema.columns AS c ON c.table_schema = tc.constraint_schema AND tc.table_name = c.table_name AND ccu.column_name = c.column_name WHERE constraint_type IN ('PRIMARY KEY', 'UNIQUE') AND c.table_catalog = 'neondb' AND c.table_schema = CURRENT_SCHEMA() AND c.table_name = 'users'[0m
+
+2026/07/04 23:44:55 [32mD:/project-all/project-all/ph level 2 assingment/assingment-5/main.go:32 [33mSLOW SQL >= 200ms
+[0m[31;1m[571.502ms] [33m[rows:-][35m SELECT a.attname as column_name, format_type(a.atttypid, a.atttypmod) AS data_type
+		FROM pg_attribute a JOIN pg_class b ON a.attrelid = b.oid AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA())
+		WHERE a.attnum > 0 -- hide internal columns
+		AND NOT a.attisdropped -- hide deleted columns
+		AND b.relname = 'users'[0m
+
+2026/07/04 23:44:55 [32mD:/project-all/project-all/ph level 2 assingment/assingment-5/main.go:32 [33mSLOW SQL >= 200ms
+[0m[31;1m[569.556ms] [33m[rows:0][35m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'users' AND column_name = 'id') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'users' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))[0m
+
+2026/07/04 23:44:56 [32mD:/project-all/project-all/ph level 2 assingment/assingment-5/main.go:32 [33mSLOW SQL >= 200ms
+[0m[31;1m[286.681ms] [33m[rows:0][35m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'users' AND column_name = 'name') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'users' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))[0m
+
+2026/07/04 23:44:56 [32mD:/project-all/project-all/ph level 2 assingment/assingment-5/main.go:32 [33mSLOW SQL >= 200ms
+[0m[31;1m[286.834ms] [33m[rows:0][35m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'users' AND column_name = 'email') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'users' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))[0m
+
+2026/07/04 23:44:56 [32mD:/project-all/project-all/ph level 2 assingment/assingment-5/main.go:32 [33mSLOW SQL >= 200ms
+[0m[31;1m[288.532ms] [33m[rows:0][35m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'users' AND column_name = 'password') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'users' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))[0m
+
+2026/07/04 23:44:57 [32mD:/project-all/project-all/ph level 2 assingment/assingment-5/main.go:32 [33mSLOW SQL >= 200ms
+[0m[31;1m[287.666ms] [33m[rows:0][35m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'users' AND column_name = 'role') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'users' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))[0m
+
+2026/07/04 23:44:57 [32mD:/project-all/project-all/ph level 2 assingment/assingment-5/main.go:32 [33mSLOW SQL >= 200ms
+[0m[31;1m[287.493ms] [33m[rows:0][35m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'users' AND column_name = 'created_at') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'users' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))[0m
+
+2026/07/04 23:44:57 [32mD:/project-all/project-all/ph level 2 assingment/assingment-5/main.go:32 [33mSLOW SQL >= 200ms
+[0m[31;1m[285.867ms] [33m[rows:0][35m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'users' AND column_name = 'updated_at') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'users' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))[0m
+
+2026/07/04 23:44:58 [32mD:/project-all/project-all/ph level 2 assingment/assingment-5/main.go:32 [33mSLOW SQL >= 200ms
+[0m[31;1m[570.231ms] [33m[rows:1][35m SELECT count(*) FROM INFORMATION_SCHEMA.table_constraints WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'users' AND constraint_name = 'chk_users_role'[0m
+
+2026/07/04 23:44:58 [32mD:/project-all/project-all/ph level 2 assingment/assingment-5/main.go:32 [33mSLOW SQL >= 200ms
+[0m[31;1m[571.691ms] [33m[rows:1][35m SELECT count(*) FROM pg_indexes WHERE tablename = 'users' AND indexname = 'idx_users_email' AND schemaname = CURRENT_SCHEMA()[0m
+
+2026/07/04 23:44:59 [32mD:/project-all/project-all/ph level 2 assingment/assingment-5/main.go:32 [33mSLOW SQL >= 200ms
+[0m[31;1m[285.517ms] [33m[rows:1][35m SELECT count(*) FROM information_schema.tables WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'parking_zones' AND table_type = 'BASE TABLE'[0m
+
+2026/07/04 23:44:59 [32mD:/project-all/project-all/ph level 2 assingment/assingment-5/main.go:32 [33mSLOW SQL >= 200ms
+[0m[31;1m[286.933ms] [33m[rows:1][35m SELECT CURRENT_DATABASE()[0m
+
+2026/07/04 23:44:59 [32mD:/project-all/project-all/ph level 2 assingment/assingment-5/main.go:32 [33mSLOW SQL >= 200ms
+[0m[31;1m[288.140ms] [33m[rows:-][35m SELECT c.column_name, c.is_nullable = 'YES', c.udt_name, c.character_maximum_length, c.numeric_precision, c.numeric_precision_radix, c.numeric_scale, c.datetime_precision, 8 * typlen, c.column_default, pd.description, c.identity_increment FROM information_schema.columns AS c JOIN pg_type AS pgt ON c.udt_name = pgt.typname LEFT JOIN pg_catalog.pg_description as pd ON pd.objsubid = c.ordinal_position AND pd.objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = c.table_name AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = c.table_schema)) where table_catalog = 'neondb' AND table_schema = CURRENT_SCHEMA() AND table_name = 'parking_zones'[0m
+
+2026/07/04 23:44:59 [32mD:/project-all/project-all/ph level 2 assingment/assingment-5/main.go:32 [33mSLOW SQL >= 200ms
+[0m[31;1m[285.934ms] [33m[rows:-][35m SELECT * FROM "parking_zones" LIMIT 5[0m
+
+2026/07/04 23:45:00 [32mD:/project-all/project-all/ph level 2 assingment/assingment-5/main.go:32 [33mSLOW SQL >= 200ms
+[0m[31;1m[798.527ms] [33m[rows:-][35m SELECT constraint_name FROM information_schema.table_constraints tc JOIN information_schema.constraint_column_usage AS ccu USING (constraint_schema, constraint_catalog, table_name, constraint_name) JOIN information_schema.columns AS c ON c.table_schema = tc.constraint_schema AND tc.table_name = c.table_name AND ccu.column_name = c.column_name WHERE constraint_type IN ('PRIMARY KEY', 'UNIQUE') AND c.table_catalog = 'neondb' AND c.table_schema = CURRENT_SCHEMA() AND c.table_name = 'parking_zones' AND constraint_type = 'UNIQUE'[0m
+
+2026/07/04 23:45:01 [32mD:/project-all/project-all/ph level 2 assingment/assingment-5/main.go:32 [33mSLOW SQL >= 200ms
+[0m[31;1m[289.437ms] [33m[rows:-][35m SELECT c.column_name, constraint_name, constraint_type FROM information_schema.table_constraints tc JOIN information_schema.constraint_column_usage AS ccu USING (constraint_schema, constraint_catalog, table_name, constraint_name) JOIN information_schema.columns AS c ON c.table_schema = tc.constraint_schema AND tc.table_name = c.table_name AND ccu.column_name = c.column_name WHERE constraint_type IN ('PRIMARY KEY', 'UNIQUE') AND c.table_catalog = 'neondb' AND c.table_schema = CURRENT_SCHEMA() AND c.table_name = 'parking_zones'[0m
+
+2026/07/04 23:45:01 [32mD:/project-all/project-all/ph level 2 assingment/assingment-5/main.go:32 [33mSLOW SQL >= 200ms
+[0m[31;1m[280.415ms] [33m[rows:-][35m SELECT a.attname as column_name, format_type(a.atttypid, a.atttypmod) AS data_type
+		FROM pg_attribute a JOIN pg_class b ON a.attrelid = b.oid AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA())
+		WHERE a.attnum > 0 -- hide internal columns
+		AND NOT a.attisdropped -- hide deleted columns
+		AND b.relname = 'parking_zones'[0m
+
+2026/07/04 23:45:01 [32mD:/project-all/project-all/ph level 2 assingment/assingment-5/main.go:32 [33mSLOW SQL >= 200ms
+[0m[31;1m[286.197ms] [33m[rows:0][35m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'parking_zones' AND column_name = 'id') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'parking_zones' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))[0m
+
+2026/07/04 23:45:01 [32mD:/project-all/project-all/ph level 2 assingment/assingment-5/main.go:32 [33mSLOW SQL >= 200ms
+[0m[31;1m[287.571ms] [33m[rows:0][35m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'parking_zones' AND column_name = 'name') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'parking_zones' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))[0m
+
+2026/07/04 23:45:02 [32mD:/project-all/project-all/ph level 2 assingment/assingment-5/main.go:32 [33mSLOW SQL >= 200ms
+[0m[31;1m[285.645ms] [33m[rows:0][35m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'parking_zones' AND column_name = 'type') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'parking_zones' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))[0m
+
+2026/07/04 23:45:02 [32mD:/project-all/project-all/ph level 2 assingment/assingment-5/main.go:32 [33mSLOW SQL >= 200ms
+[0m[31;1m[286.412ms] [33m[rows:0][35m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'parking_zones' AND column_name = 'total_capacity') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'parking_zones' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))[0m
+
+2026/07/04 23:45:02 [32mD:/project-all/project-all/ph level 2 assingment/assingment-5/main.go:32 [33mSLOW SQL >= 200ms
+[0m[31;1m[285.633ms] [33m[rows:0][35m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'parking_zones' AND column_name = 'price_per_hour') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'parking_zones' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))[0m
+
+2026/07/04 23:45:03 [32mD:/project-all/project-all/ph level 2 assingment/assingment-5/main.go:32 [33mSLOW SQL >= 200ms
+[
+2026/07/04 23:45:07 [32mD:/project-all/project-all/ph level 2 assingment/assingment-5/repository/zone_repository.go:52 [33mSLOW SQL >= 200ms
+[0m[31;1m[2277.186ms] [33m[rows:1][35m SELECT parking_zones.*, (parking_zones.total_capacity - COALESCE((SELECT COUNT(*) FROM reservations WHERE reservations.zone_id = parking_zones.id AND reservations.status = 'active'), 0)) AS available_spots FROM "parking_zones" ORDER BY parking_zones.id[0m
+{"time":"2026-07-04T23:45:07.0336072+06:00","id":"","remote_ip":"::1","host":"localhost:8080","method":"GET","uri":"/api/v1/zones","user_agent":"Mozilla/5.0 (Windows NT; Windows NT 10.0; en-US) WindowsPowerShell/5.1.26100.8737","status":200,"error":"","latency":2279859200,"latency_human":"2.2798592s","bytes_in":0,"bytes_out":247}
+D table_name = 'parking_zones' AND column_name = 'updated_at') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'parking_zones' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))[0m
+
+2026/07/04 23:45:03 [32mD:/project-all/project-all/ph level 2 assingment/assingment-5/main.go:32 [33mSLOW SQL >= 200ms
+[0m[31;1m[285.411ms] [33m[rows:1][35m SELECT count(*) FROM INFORMATION_SCHEMA.table_constraints WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'parking_zones' AND constraint_name = 'chk_parking_zones_type'[0m
+
+2026/07/04 23:45:03 [32mD:/project-all/project-all/ph level 2 assingment/assingment-5/main.go:32 [33mSLOW SQL >= 200ms
+[0m[31;1m[287.939ms] [33m[rows:1][35m SELECT count(*) FROM information_schema.tables WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'reservations' AND table_type = 'BASE TABLE'[0m
+
+2026/07/04 23:45:04 [32mD:/project-all/project-all/ph level 2 assingment/assingment-5/main.go:32 [33mSLOW SQL >= 200ms
+[0m[31;1m[337.633ms] [33m[rows:0][35m CREATE TABLE "reservations" ("id" bigserial,"user_id" bigint NOT NULL,"zone_id" bigint NOT NULL,"license_plate" varchar(15) NOT NULL,"status" varchar(20) NOT NULL DEFAULT 'active',"created_at" timestamptz,"updated_at" timestamptz,PRIMARY KEY ("id"),CONSTRAINT "fk_reservations_user" FOREIGN KEY ("user_id") REFERENCES "users"("id"),CONSTRAINT "fk_reservations_zone" FOREIGN KEY ("zone_id") REFERENCES "parking_zones"("id"),CONSTRAINT "chk_reservations_status" CHECK (status IN ('active','completed','cancelled')))[0m
+
+2026/07/04 23:45:04 [32mD:/project-all/project-all/ph level 2 assingment/assingment-5/main.go:32 [33mSLOW SQL >= 200ms
+[0m[31;1m[287.296ms] [33m[rows:0][35m CREATE INDEX IF NOT EXISTS "idx_reservations_zone_id" ON "reservations" ("zone_id")[0m
+
+2026/07/04 23:45:04 [32mD:/project-all/project-all/ph level 2 assingment/assingment-5/main.go:32 [33mSLOW SQL >= 200ms
+[0m[31;1m[287.929ms] [33m[rows:0][35m CREATE INDEX IF NOT EXISTS "idx_reservations_user_id" ON "reservations" ("user_id")[0m
+
+   ____    __
+  / __/___/ /  ___
+ / _// __/ _ \/ _ \
+/___/\__/_//_/\___/ v4.15.4
+High performance, minimalist Go web framework
+https://echo.labstack.com
+____________________________________O/_______
+                                    O\

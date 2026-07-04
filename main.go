@@ -29,7 +29,7 @@ func main() {
 	cfg := config.LoadEnv()
 	db := config.ConnectDatabase(cfg)
 
-	if err := db.AutoMigrate(&models.User{}, &models.ParkingZone{}); err != nil {
+	if err := db.AutoMigrate(&models.User{}, &models.ParkingZone{}, &models.Reservation{}); err != nil {
 		log.Fatalf("failed to run migrations: %v", err)
 	}
 
