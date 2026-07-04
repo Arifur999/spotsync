@@ -11,6 +11,11 @@ spotsync.exe
 # Air (hot reload)
 build-errors.log
 
+# local test artifacts
+server_out.log
+server_err.log
+*.log
+
 # IDE
 .vscode/
 .idea/

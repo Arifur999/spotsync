@@ -8,7 +8,13 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
-func SetupRoutes(e *echo.Echo, authHandler *handler.AuthHandler, zoneHandler *handler.ZoneHandler, jwtSecret string) {
+func SetupRoutes(
+	e *echo.Echo,
+	authHandler *handler.AuthHandler,
+	zoneHandler *handler.ZoneHandler,
+	reservationHandler *handler.ReservationHandler,
+	jwtSecret string,
+) {
 	api := e.Group("/api/v1")
 
 	auth := api.Group("/auth")
@@ -19,4 +25,10 @@ func SetupRoutes(e *echo.Echo, authHandler *handler.AuthHandler, zoneHandler *ha
 	zones.GET("", zoneHandler.GetAllZones)
 	zones.GET("/:id", zoneHandler.GetZoneByID)
 	zones.POST("", zoneHandler.CreateZone, middleware.JWTAuth(jwtSecret), middleware.RequireRole(models.RoleAdmin))
+
+	reservations := api.Group("/reservations", middleware.JWTAuth(jwtSecret))
+	reservations.POST("", reservationHandler.CreateReservation)
+	reservations.GET("/my-reservations", reservationHandler.GetMyReservations)
+	reservations.DELETE("/:id", reservationHandler.CancelReservation)
+	reservations.GET("", reservationHandler.GetAllReservations, middleware.RequireRole(models.RoleAdmin))
 }

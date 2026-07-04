@@ -52,7 +52,11 @@ func main() {
 	zoneService := service.NewZoneService(zoneRepo)
 	zoneHandler := handler.NewZoneHandler(zoneService)
 
-	router.SetupRoutes(e, authHandler, zoneHandler, cfg.JWTSecret)
+	reservationRepo := repository.NewReservationRepository(db)
+	reservationService := service.NewReservationService(reservationRepo)
+	reservationHandler := handler.NewReservationHandler(reservationService)
+
+	router.SetupRoutes(e, authHandler, zoneHandler, reservationHandler, cfg.JWTSecret)
 
 	port := cfg.Port
 	if port == "" {
