@@ -7,9 +7,9 @@ import (
 )
 
 type SuccessResponse struct {
-	Success bool `json:"success"`
+	Success bool   `json:"success"`
 	Message string `json:"message"`
-	Data    any  `json:"data,omitempty"`
+	Data    any    `json:"data,omitempty"`
 }
 
 type ErrorResponse struct {
