@@ -48,7 +48,11 @@ func main() {
 	authService := service.NewAuthService(userRepo, cfg.JWTSecret)
 	authHandler := handler.NewAuthHandler(authService)
 
-	router.SetupRoutes(e, authHandler)
+	zoneRepo := repository.NewZoneRepository(db)
+	zoneService := service.NewZoneService(zoneRepo)
+	zoneHandler := handler.NewZoneHandler(zoneService)
+
+	router.SetupRoutes(e, authHandler, zoneHandler, cfg.JWTSecret)
 
 	port := cfg.Port
 	if port == "" {
