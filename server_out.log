@@ -1,0 +1,78 @@
+
+2026/07/04 23:28:07 [32mD:/project-all/project-all/ph level 2 assingment/assingment-5/main.go:32 [33mSLOW SQL >= 200ms
+[0m[31;1m[816.206ms] [33m[rows:1][35m SELECT count(*) FROM information_schema.tables WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'users' AND table_type = 'BASE TABLE'[0m
+
+2026/07/04 23:28:08 [32mD:/project-all/project-all/ph level 2 assingment/assingment-5/main.go:32 [33mSLOW SQL >= 200ms
+[0m[31;1m[543.762ms] [33m[rows:1][35m SELECT CURRENT_DATABASE()[0m
+
+2026/07/04 23:28:08 [32mD:/project-all/project-all/ph level 2 assingment/assingment-5/main.go:32 [33mSLOW SQL >= 200ms
+[0m[31;1m[549.182ms] [33m[rows:-][35m SELECT c.column_name, c.is_nullable = 'YES', c.udt_name, c.character_maximum_length, c.numeric_precision, c.numeric_precision_radix, c.numeric_scale, c.datetime_precision, 8 * typlen, c.column_default, pd.description, c.identity_increment FROM information_schema.columns AS c JOIN pg_type AS pgt ON c.udt_name = pgt.typname LEFT JOIN pg_catalog.pg_description as pd ON pd.objsubid = c.ordinal_position AND pd.objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = c.table_name AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = c.table_schema)) where table_catalog = 'neondb' AND table_schema = CURRENT_SCHEMA() AND table_name = 'users'[0m
+
+2026/07/04 23:28:08 [32mD:/project-all/project-all/ph level 2 assingment/assingment-5/main.go:32 [33mSLOW SQL >= 200ms
+[0m[31;1m[271.602ms] [33m[rows:-][35m SELECT * FROM "users" LIMIT 5[0m
+
+2026/07/04 23:28:09 [32mD:/project-all/project-all/ph level 2 assingment/assingment-5/main.go:32 [33mSLOW SQL >= 200ms
+[0m[31;1m[545.316ms] [33m[rows:-][35m SELECT constraint_name FROM information_schema.table_constraints tc JOIN information_schema.constraint_column_usage AS ccu USING (constraint_schema, constraint_catalog, table_name, constraint_name) JOIN information_schema.columns AS c ON c.table_schema = tc.constraint_schema AND tc.table_name = c.table_name AND ccu.column_name = c.column_name WHERE constraint_type IN ('PRIMARY KEY', 'UNIQUE') AND c.table_catalog = 'neondb' AND c.table_schema = CURRENT_SCHEMA() AND c.table_name = 'users' AND constraint_type = 'UNIQUE'[0m
+
+2026/07/04 23:28:10 [32mD:/project-all/project-all/ph level 2 assingment/assingment-5/main.go:32 [33mSLOW SQL >= 200ms
+[0m[31;1m[540.270ms] [33m[rows:-][35m SELECT c.column_name, constraint_name, constraint_type FROM information_schema.table_constraints tc JOIN information_schema.constraint_column_usage AS ccu USING (constraint_schema, constraint_catalog, table_name, constraint_name) JOIN information_schema.columns AS c ON c.table_schema = tc.constraint_schema AND tc.table_name = c.table_name AND ccu.column_name = c.column_name WHERE constraint_type IN ('PRIMARY KEY', 'UNIQUE') AND c.table_catalog = 'neondb' AND c.table_schema = CURRENT_SCHEMA() AND c.table_name = 'users'[0m
+
+2026/07/04 23:28:10 [32mD:/project-all/project-all/ph level 2 assingment/assingment-5/main.go:32 [33mSLOW SQL >= 200ms
+[0m[31;1m[543.758ms] [33m[rows:-][35m SELECT a.attname as column_name, format_type(a.atttypid, a.atttypmod) AS data_type
+		FROM pg_attribute a JOIN pg_class b ON a.attrelid = b.oid AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA())
+		WHERE a.attnum > 0 -- hide internal columns
+		AND NOT a.attisdropped -- hide deleted columns
+		AND b.relname = 'users'[0m
+
+2026/07/04 23:28:11 [32mD:/project-all/project-all/ph level 2 assingment/assingment-5/main.go:32 [33mSLOW SQL >= 200ms
+[0m[31;1m[543.320ms] [33m[rows:0][35m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'users' AND column_name = 'id') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'users' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))[0m
+
+2026/07/04 23:28:11 [32mD:/project-all/project-all/ph level 2 assingment/assingment-5/main.go:32 [33mSLOW SQL >= 200ms
+[0m[31;1m[272.063ms] [33m[rows:0][35m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'users' AND column_name = 'name') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'users' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))[0m
+
+2026/07/04 23:28:11 [32mD:/project-all/project-all/ph level 2 assingment/assingment-5/main.go:32 [33mSLOW SQL >= 200ms
+[0m[31;1m[272.152ms] [33m[rows:0][35m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'users' AND column_name = 'email') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'users' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))[0m
+
+2026/07/04 23:28:11 [32mD:/project-all/project-all/ph level 2 assingment/assingment-5/main.go:32 [33mSLOW SQL >= 200ms
+[0m[31;1m[271.984ms] [33m[rows:0][35m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'users' AND column_name = 'password') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'users' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))[0m
+
+2026/07/04 23:28:12 [32mD:/project-all/project-all/ph level 2 assingment/assingment-5/main.go:32 [33mSLOW SQL >= 200ms
+[0m[31;1m[272.178ms] [33m[rows:0][35m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'users' AND column_name = 'role') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'users' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))[0m
+
+2026/07/04 23:28:12 [32mD:/project-all/project-all/ph level 2 assingment/assingment-5/main.go:32 [33mSLOW SQL >= 200ms
+[0m[31;1m[272.320ms] [33m[rows:0][35m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'users' AND column_name = 'created_at') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'users' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))[0m
+
+2026/07/04 23:28:12 [32mD:/project-all/project-all/ph level 2 assingment/assingment-5/main.go:32 [33mSLOW SQL >= 200ms
+[0m[31;1m[271.120ms] [33m[rows:0][35m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'users' AND column_name = 'updated_at') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'users' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))[0m
+
+2026/07/04 23:28:13 [32mD:/project-all/project-all/ph level 2 assingment/assingment-5/main.go:32 [33mSLOW SQL >= 200ms
+[0m[31;1m[544.205ms] [33m[rows:1][35m SELECT count(*) FROM INFORMATION_SCHEMA.table_constraints WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'users' AND constraint_name = 'chk_users_role'[0m
+
+2026/07/04 23:28:13 [32mD:/project-all/project-all/ph level 2 assingment/assingment-5/main.go:32 [33mSLOW SQL >= 200ms
+[0m[31;1m[543.563ms] [33m[rows:1][35m SELECT count(*) FROM pg_indexes WHERE tablename = 'users' AND indexname = 'idx_users_email' AND schemaname = CURRENT_SCHEMA()[0m
+
+   ____    __
+  / __/___/ /  ___
+ / _// __/ _ \/ _ \
+/___/\__/_//_/\___/ v4.15.4
+High performance, minimalist Go web framework
+https://echo.labstack.com
+____________________________________O/_______
+                                    O\
+⇨ http server started on [::]:8080
+
+2026/07/04 23:28:34 [32mD:/project-all/project-all/ph level 2 assingment/assingment-5/repository/user_repository.go:27 [33mSLOW SQL >= 200ms
+[0m[31;1m[1370.494ms] [33m[rows:1][35m INSERT INTO "users" ("name","email","password","role","created_at","updated_at") VALUES ('John Doe','john.doe.step8@spotsync.com','$2a$12$YLnNc3El8fUVpx6UHlrx7.LQNXxBmfC1dcytZSCDqWNplhUsTinxq','driver','2026-07-04 23:28:34.097','2026-07-04 23:28:34.097') RETURNING "id"[0m
+{"time":"2026-07-04T23:28:34.9223996+06:00","id":"","remote_ip":"::1","host":"localhost:8080","method":"POST","uri":"/api/v1/auth/register","user_agent":"Mozilla/5.0 (Windows NT; Windows NT 10.0; en-US) WindowsPowerShell/5.1.26100.8737","status":201,"error":"","latency":1583510400,"latency_human":"1.5835104s","bytes_in":104,"bytes_out":244}
+
+2026/07/04 23:28:47 [32mD:/project-all/project-all/ph level 2 assingment/assingment-5/repository/user_repository.go:39 [33mSLOW SQL >= 200ms
+[0m[31;1m[821.428ms] [33m[rows:1][35m SELECT * FROM "users" WHERE email = 'john.doe.step8@spotsync.com' ORDER BY "users"."id" LIMIT 1[0m
+{"time":"2026-07-04T23:28:48.1563754+06:00","id":"","remote_ip":"::1","host":"localhost:8080","method":"POST","uri":"/api/v1/auth/login","user_agent":"Mozilla/5.0 (Windows NT; Windows NT 10.0; en-US) WindowsPowerShell/5.1.26100.8737","status":200,"error":"","latency":1013744300,"latency_human":"1.0137443s","bytes_in":70,"bytes_out":342}
+
+2026/07/04 23:28:48 [32mD:/project-all/project-all/ph level 2 assingment/assingment-5/repository/user_repository.go:39 [33mSLOW SQL >= 200ms
+[0m[31;1m[544.238ms] [33m[rows:1][35m SELECT * FROM "users" WHERE email = 'john.doe.step8@spotsync.com' ORDER BY "users"."id" LIMIT 1[0m
+{"time":"2026-07-04T23:28:48.9216604+06:00","id":"","remote_ip":"::1","host":"localhost:8080","method":"POST","uri":"/api/v1/auth/login","user_agent":"Mozilla/5.0 (Windows NT; Windows NT 10.0; en-US) WindowsPowerShell/5.1.26100.8737","status":401,"error":"","latency":742480600,"latency_human":"742.4806ms","bytes_in":66,"bytes_out":80}
+
+2026/07/04 23:28:49 [31;1mD:/project-all/project-all/ph level 2 assingment/assingment-5/repository/user_repository.go:27 [35;1mduplicated key not allowed
+[0m[33m[818.231ms] [34;1m[rows:0][0m INSERT INTO "users" ("name","email","password","role","created_at","updated_at") VALUES ('John Doe','john.doe.step8@spotsync.com','$2a$12$7h4nnDaJ14TI4H0UdtLMUOTmbYQEg0XYkD5wvZdDG3/h7FuEWLk4G','driver','2026-07-04 23:28:49.395','2026-07-04 23:28:49.395') RETURNING "id"
+{"time":"2026-07-04T23:28:49.9435473+06:00","id":"","remote_ip":"::1","host":"localhost:8080","method":"POST","uri":"/api/v1/auth/register","user_agent":"Mozilla/5.0 (Windows NT; Windows NT 10.0; en-US) WindowsPowerShell/5.1.26100.8737","status":400,"error":"","latency":1020382800,"latency_human":"1.0203828s","bytes_in":104,"bytes_out":97}
