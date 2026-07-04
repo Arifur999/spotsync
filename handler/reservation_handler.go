@@ -53,7 +53,7 @@ func (h *ReservationHandler) GetMyReservations(c echo.Context) error {
 
 	reservations, err := h.reservationService.GetMyReservations(userID)
 	if err != nil {
-		return utils.Fail(c, http.StatusInternalServerError, "Failed to retrieve reservations", err.Error())
+		return utils.InternalError(c, err)
 	}
 
 	return utils.Success(c, http.StatusOK, "My reservations retrieved successfully", reservations)
@@ -81,7 +81,7 @@ func (h *ReservationHandler) CancelReservation(c echo.Context) error {
 func (h *ReservationHandler) GetAllReservations(c echo.Context) error {
 	reservations, err := h.reservationService.GetAllReservations()
 	if err != nil {
-		return utils.Fail(c, http.StatusInternalServerError, "Failed to retrieve reservations", err.Error())
+		return utils.InternalError(c, err)
 	}
 
 	return utils.Success(c, http.StatusOK, "Reservations retrieved successfully", reservations)
@@ -100,6 +100,6 @@ func reservationErrorResponse(c echo.Context, err error) error {
 	case errors.Is(err, service.ErrReservationAlreadyCancelled):
 		return utils.Fail(c, http.StatusConflict, "Reservation already cancelled", err.Error())
 	default:
-		return utils.Fail(c, http.StatusInternalServerError, "Something went wrong", err.Error())
+		return utils.InternalError(c, err)
 	}
 }

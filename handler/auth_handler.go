@@ -35,7 +35,7 @@ func (h *AuthHandler) Register(c echo.Context) error {
 		if errors.Is(err, repository.ErrEmailAlreadyExists) {
 			return utils.Fail(c, http.StatusBadRequest, "Registration failed", err.Error())
 		}
-		return utils.Fail(c, http.StatusInternalServerError, "Failed to register user", err.Error())
+		return utils.InternalError(c, err)
 	}
 
 	return utils.Success(c, http.StatusCreated, "User registered successfully", user)
@@ -56,7 +56,7 @@ func (h *AuthHandler) Login(c echo.Context) error {
 		if errors.Is(err, service.ErrInvalidCredentials) {
 			return utils.Fail(c, http.StatusUnauthorized, "Login failed", err.Error())
 		}
-		return utils.Fail(c, http.StatusInternalServerError, "Failed to login", err.Error())
+		return utils.InternalError(c, err)
 	}
 
 	return utils.Success(c, http.StatusOK, "Login successful", loginResp)

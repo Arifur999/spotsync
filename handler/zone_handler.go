@@ -33,7 +33,7 @@ func (h *ZoneHandler) CreateZone(c echo.Context) error {
 
 	zone, err := h.zoneService.CreateZone(req)
 	if err != nil {
-		return utils.Fail(c, http.StatusInternalServerError, "Failed to create parking zone", err.Error())
+		return utils.InternalError(c, err)
 	}
 
 	return utils.Success(c, http.StatusCreated, "Parking zone created successfully", zone)
@@ -42,7 +42,7 @@ func (h *ZoneHandler) CreateZone(c echo.Context) error {
 func (h *ZoneHandler) GetAllZones(c echo.Context) error {
 	zones, err := h.zoneService.GetAllZones()
 	if err != nil {
-		return utils.Fail(c, http.StatusInternalServerError, "Failed to retrieve parking zones", err.Error())
+		return utils.InternalError(c, err)
 	}
 
 	return utils.Success(c, http.StatusOK, "Parking zones retrieved successfully", zones)
@@ -59,7 +59,7 @@ func (h *ZoneHandler) GetZoneByID(c echo.Context) error {
 		if errors.Is(err, repository.ErrZoneNotFound) {
 			return utils.Fail(c, http.StatusNotFound, "Parking zone not found", err.Error())
 		}
-		return utils.Fail(c, http.StatusInternalServerError, "Failed to retrieve parking zone", err.Error())
+		return utils.InternalError(c, err)
 	}
 
 	return utils.Success(c, http.StatusOK, "Parking zone retrieved successfully", zone)

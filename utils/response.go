@@ -1,6 +1,10 @@
 package utils
 
-import "github.com/labstack/echo/v4"
+import (
+	"net/http"
+
+	"github.com/labstack/echo/v4"
+)
 
 type SuccessResponse struct {
 	Success bool `json:"success"`
@@ -30,4 +34,11 @@ func Fail(c echo.Context, status int, message string, errDetails any) error {
 		Message: message,
 		Errors:  errDetails,
 	})
+}
+
+// InternalError logs the real (possibly raw GORM/DB) error server-side and
+// returns a generic 500 response so internal details never reach the client.
+func InternalError(c echo.Context, err error) error {
+	c.Logger().Error(err)
+	return Fail(c, http.StatusInternalServerError, "Something went wrong", nil)
 }
