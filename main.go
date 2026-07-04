@@ -5,6 +5,7 @@ import (
 	"net/http"
 
 	"github.com/Arifur999/spotsync/config"
+	"github.com/Arifur999/spotsync/models"
 	"github.com/Arifur999/spotsync/utils"
 
 	"github.com/go-playground/validator/v10"
@@ -23,7 +24,10 @@ func (cv *customValidator) Validate(i any) error {
 func main() {
 	cfg := config.LoadEnv()
 	db := config.ConnectDatabase(cfg)
-	_ = db // wired into repositories in later steps
+
+	if err := db.AutoMigrate(&models.User{}); err != nil {
+		log.Fatalf("failed to run migrations: %v", err)
+	}
 
 	e := echo.New()
 	e.Validator = &customValidator{validator: validator.New()}
